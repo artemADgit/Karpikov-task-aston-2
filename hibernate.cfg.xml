@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- Конфигурационный файл Hibernate для подключения к PostgreSQL -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Настройки подключения к базе данных PostgreSQL -->
+        <!-- Базовые настройки, URL и учетные данные устанавливаются программно -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        
+        <!-- Настройки пула соединений -->
+        <!-- Используем встроенный пул Hibernate (для разработки) -->
+        <property name="hibernate.connection.pool_size">10</property>
+        
+        <!-- Настройки схемы базы данных -->
+        <!-- Обновляем схему при изменениях (для разработки) -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- Вывод SQL-запросов в консоль для отладки -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- Форматирование SQL-запросов для лучшей читаемости -->
+        <property name="hibernate.format_sql">true</property>
+        
+        <!-- Использование SQL комментариев для понимания генерируемых запросов -->
+        <property name="hibernate.use_sql_comments">true</property>
+        
+        <!-- Кодировка для работы с базой данных -->
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+        
+        <!-- Настройки кэширования второго уровня (отключены для упрощения) -->
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+        <property name="hibernate.cache.use_query_cache">false</property>
+        
+        <!-- Статистика Hibernate для мониторинга производительности -->
+        <property name="hibernate.generate_statistics">false</property>
+        
+        <!-- Настройка текущей сессии -->
+        <property name="hibernate.current_session_context_class">thread</property>
+        
+        <!-- Маппинг классов сущностей -->
+        <!-- Указываем Hibernate какие классы являются сущностями -->
+        <mapping class="com.userservice.entity.User"/>
+        
+    </session-factory>
+</hibernate-configuration>
